@@ -9,12 +9,12 @@
                 <h3 class="card-title">{{ product.price | currency }}</h3>
                 <h5 class="card-title">{{ product.name}}</h5>
 
-                <a href="#" class="btn btn-primary "  (click)="delete(product)"> Delete</a>
+                <button  class="btn btn-primary "  (click)="delete(product)"> Delete</button>
 
             </div>
             <div class="card-body">
 
-                <a href="#" class="btn btn-primary "  (click)="myFunction(product._id)"> Update</a>
+                <button  class="btn btn-primary "  (click)="myFunction(product._id)"> Update</button>
 
                 <div class="myDIV" id = "{{  product._id }}" >
                     <div class="card-header">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="card-body">
 
-                        <a href="#" class="btn btn-primary "  (click)="update(ProductName.value,ProductPrice.value,product)"> Submit</a>
+                        <button  class="btn btn-primary "  (click)="update(ProductName.value,ProductPrice.value,product)"> Submit</button>
 
                     </div>
                 </div>
@@ -54,7 +54,7 @@
 
         </div>
         <div class="card-body">
-            <a href="#" class="btn btn-primary "  (click)="create(ProductName.value,ProductPrice.value)"> create</a>
+            <button  class="btn btn-primary "  (click)="create(ProductName.value,ProductPrice.value)"> create</button>
         </div>
         <div class="card-footer text-muted">
 

@@ -27,15 +27,16 @@ export class ItemsComponent implements OnInit {
             });
     }
 
-    delete(product): void {
+    delete(product) {
 
-        this.ProductsList = this.ProductsList.filter(Product => Product !== product);
-        this.http.delete('http://localhost:3000/api/product/deleteProduct/' + product._id).subscribe();
+
+        this.http.delete('http://localhost:3000/api/product/deleteProduct/' + product._id).subscribe(res =>{
+            this.ProductsList.splice(this.ProductsList.indexOf(product),1);});
 
 
     }
 
-    create(name, price): void {
+    create(name, price){
         let username = JSON.parse(localStorage.getItem('currentUser')).user.username;
         const product = {
             name: name,
@@ -44,8 +45,9 @@ export class ItemsComponent implements OnInit {
             updatedAt: Date.now(),
             sellerName: username
         }
-        this.ProductsList = this.ProductsList.concat(product);
-        this.http.post('http://localhost:3000/api/product/createProduct/', product).subscribe();
+
+        this.http.post('http://localhost:3000/api/product/createProduct/', product).subscribe(
+            res =>{ this.ProductsList = this.ProductsList.concat(product);});
 
     }
 
@@ -65,7 +67,8 @@ export class ItemsComponent implements OnInit {
             updatedAt: Date.now(),
             sellerName: username
         }
-        this.http.patch('http://localhost:3000/api/product/updateProduct/' + product._id, newProduct).subscribe();
+        this.http.patch('http://localhost:3000/api/product/updateProduct/' + product._id, newProduct).subscribe(res =>{
+            this.ProductsList[this.ProductsList.indexOf(product)]=newProduct;});
 
     }
 
