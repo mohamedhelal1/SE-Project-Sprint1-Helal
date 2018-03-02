@@ -67,8 +67,9 @@ export class ItemsComponent implements OnInit {
             updatedAt: Date.now(),
             sellerName: username
         }
-        this.http.patch('http://localhost:3000/api/product/updateProduct/' + product._id, newProduct).subscribe(res =>{
-            this.ProductsList[this.ProductsList.indexOf(product)]=newProduct;});
+        this.ProductsList[this.ProductsList.indexOf(product)].name=name;
+        this.ProductsList[this.ProductsList.indexOf(product)].price=price;
+        this.http.patch('http://localhost:3000/api/product/updateProduct/' + product._id, newProduct).subscribe();
 
     }
 
