@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-lg-4 col-md-4"  *ngFor="let product of ProductsList">
+        <div class="card text-center">
+            <div class="card-header">
+
+                {{ product.sellerName}}
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">{{ product.price | currency }}</h3>
+                <h5 class="card-title">{{ product.name}}</h5>
+
+                <a href="#" class="btn btn-primary "  (click)="delete(product)"> Delete</a>
+
+            </div>
+            <div class="card-body">
+
+                <a href="#" class="btn btn-primary "  (click)="myFunction(product._id)"> Update</a>
+
+                <div class="myDIV" id = "{{  product._id }}" >
+                    <div class="card-header">
+                        <a> ProductName</a>
+                        <br/>
+                        <input #ProductName />
+                    </div>
+                    <div class="card-body">
+                        <a> ProductPrice</a>
+                        <br/>
+                        <input #ProductPrice />
+
+                    </div>
+                    <div class="card-body">
+
+                        <a href="#" class="btn btn-primary "  (click)="update(ProductName.value,ProductPrice.value,product)"> Submit</a>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-footer text-muted">
+                {{ product.createdAt | date}}
+            </div>
+        </div>
+    </div>
+    <div class="card text-center">
+        <div class="card-header">
+            <a> ProductName</a>
+            <br/>
+            <input #ProductName />
+        </div>
+        <div class="card-body">
+            <a> ProductPrice</a>
+            <br/>
+            <input #ProductPrice />
+
+        </div>
+        <div class="card-body">
+            <a href="#" class="btn btn-primary "  (click)="create(ProductName.value,ProductPrice.value)"> create</a>
+        </div>
+        <div class="card-footer text-muted">
+
+        </div>
+    </div>
+
+</div>
